@@ -1,13 +1,16 @@
 import React from 'react';
-import {SafeAreaView, View, Text} from 'react-native';
+import Clothing from '../../dummydata/Clothing'
+import CategorySlide from '../organism/CategorySlide';
+import ScrollContainer from '../atoms/ScrollContainer'
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView>
-      <View>
-        <Text>HOME SCREEN</Text>
-      </View>
-    </SafeAreaView>
+   <ScrollContainer>
+  <CategorySlide title='Hot Discounts' category={Clothing}/>
+  <CategorySlide title='Last Chances' category={Clothing}/>
+  <CategorySlide title='Delicious Offers' category={Clothing}/>
+  <CategorySlide title='Coming Discounts' category={Clothing}/>
+  </ScrollContainer>
   );
 };
 

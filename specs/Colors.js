@@ -4,7 +4,7 @@ export default Colors = {
     pastelCoral: '#e5989b',
     salmon: '#ffb4a2',
     peach: '#ffcdb2',
-    mediumGray: '#cccccc',
+    mediumGray: '#C4C4C4',
     darkGray: '#7d7d7d',
     lightGray: '#efefef'
 

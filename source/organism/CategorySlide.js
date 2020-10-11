@@ -5,13 +5,13 @@ import DiscountBox from '../molecules/DiscountBox'
 import NonScrollContainer from '../atoms/NonScrollContainer'
 
 
-const CategorySlide = ({category, title}) => {
+const CategorySlide = ({category, title, onPressFunction}) => {
     return ( 
         <NonScrollContainer>
         <View>
        
           <CategoryTitle title={title}/>
-          <FlatList contentContainerStyle={{paddingHorizontal: 20}} horizontal={true} data={category} renderItem={itemData =>   <DiscountBox name={itemData.item.name} category={itemData.item.category} discount={itemData.item.percent}/>}/>
+          <FlatList contentContainerStyle={{paddingHorizontal: 20}} horizontal={true} data={category} renderItem={itemData =>   <DiscountBox name={itemData.item.name} category={itemData.item.category} discount={itemData.item.percent} callback={() => onPressFunction(itemData.item.id)}/>}/>
   
         </View>
         </NonScrollContainer>

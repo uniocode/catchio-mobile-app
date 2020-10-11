@@ -1,4 +1,5 @@
 import React from 'react';
+import {TouchableOpacity} from 'react-native'
 import styled from 'styled-components'
 import Colors from '../../specs/Colors'
 
@@ -23,12 +24,14 @@ line-height: 25px;
 
 `
 
-const DiscountBox = ({name, discount, image, validUntil, category}) => {
+const DiscountBox = ({name, discount, image, validUntil, category, callback}) => {
     return (  
+        <TouchableOpacity activeOpacity={0.5} onPress={callback}>
         <Container>
             <Text>{name}</Text>
     <Text>{discount} % for all {category}</Text>
         </Container>
+        </TouchableOpacity>
     );
 }
  

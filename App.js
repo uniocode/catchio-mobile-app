@@ -17,10 +17,9 @@ const App = () => {
   const store = createStore(rootReducer)
 
   const loginHandler = (username, password) => {
-    console.log('here')
-    // if (username === 'Sura' && password === 1234) {
-     
-    // }
+
+    setLogged(true)
+
   }
   
 

@@ -20,12 +20,10 @@ text-transform: uppercase;
 
 `
 
-const Button = ({title, width, marginTop}) => {
-    const test = () => {
-        console.log('works')
-    }
+const Button = ({title, width, marginTop, onPress}) => {
+  
     return ( 
-        <TouchableOpacity style={{width:'100%', alignItems: 'center'}} onPress={this.callback}>
+        <TouchableOpacity style={{width:'100%', alignItems: 'center'}} onPress={onPress}>
             <Wrapper marginTop={marginTop} width={width}>
                 <Text>{title}</Text>
             </Wrapper>

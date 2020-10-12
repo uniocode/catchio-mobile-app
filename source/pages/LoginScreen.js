@@ -11,10 +11,6 @@ const LoginScreen = ({callback}) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    const loginHandler = () => {
-        console.log('in Login Screen')
-    }
-
 
     return ( 
         <SafeAreaView>
@@ -32,8 +28,7 @@ const LoginScreen = ({callback}) => {
             </TextWrapper>
             <Input marginTop={40} value={username} onChangeText={input => setUsername(input)}/>
             <Input marginTop={10} secureTextEntry={true} value={password} onChangeText={input => setPassword(input)}/>
-            <Button width={80} marginTop={10} title='SIGN IN' onPress={loginHandler}/>
-
+            <Button width={80} marginTop={10} title='SIGN IN' onPress={callback}/>
         <TextWrapper marginTop={20} >
             <SmallText gray={true}>Forgot your password? </SmallText>
         </TextWrapper>

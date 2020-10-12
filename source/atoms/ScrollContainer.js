@@ -1,12 +1,11 @@
 import styled from 'styled-components'
-import {ScrollView} from 'react-native'
 
-const Container = styled.ScrollView`
+
+const ScrollContainer = styled.ScrollView`
 width: 100%;
-height: 100%;
-background: white;
+height: 100px;
 `
 
 
  
-export default Container;
+export default ScrollContainer;

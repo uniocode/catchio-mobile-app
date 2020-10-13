@@ -4,7 +4,7 @@ export default Clothing = [{
     category: 'Winter Collection',
     percent: 20,
     validUntil: '20/07/2020',
-    imgUrl: 'https://www.macleans.ca/wp-content/uploads/2014/09/MAC36_WOMENS_CLOTHES_POST.jpg'
+    imgUrl: 'https://picsum.photos/500/500'
 },
 
 {
@@ -13,7 +13,7 @@ export default Clothing = [{
     category: 'Denim Collection',
     percent: 35,
     validUntil: '13/09/2020',
-    imgUrl: 'https://www.macleans.ca/wp-content/uploads/2014/09/MAC36_WOMENS_CLOTHES_POST.jpg'
+    imgUrl: 'https://picsum.photos/500/500'
 },
 
 {
@@ -22,7 +22,7 @@ export default Clothing = [{
     category: 'All Accessories',
     percent: 20,
     validUntil: '13/09/2020',
-    imgUrl: 'https://www.macleans.ca/wp-content/uploads/2014/09/MAC36_WOMENS_CLOTHES_POST.jpg'
+    imgUrl: 'https://picsum.photos/500/500'
 },
 
 {
@@ -31,7 +31,7 @@ export default Clothing = [{
     category: 'Workout Clothing',
     percent: 10,
     validUntil: '13/09/2020',
-    imgUrl: 'https://www.macleans.ca/wp-content/uploads/2014/09/MAC36_WOMENS_CLOTHES_POST.jpg'
+    imgUrl: 'https://picsum.photos/500/500'
 },
 
 {
@@ -40,7 +40,7 @@ export default Clothing = [{
     category: 'Black Collection',
     percent: 15,
     validUntil: '13/09/2020',
-    imgUrl: 'https://www.macleans.ca/wp-content/uploads/2014/09/MAC36_WOMENS_CLOTHES_POST.jpg'
+    imgUrl: 'https://picsum.photos/500/500'
 },
 
 {
@@ -49,7 +49,7 @@ export default Clothing = [{
     category: 'Running Collection',
     percent: 10,
     validUntil: '13/09/2020',
-    imgUrl: 'https://www.macleans.ca/wp-content/uploads/2014/09/MAC36_WOMENS_CLOTHES_POST.jpg'
+    imgUrl: 'https://picsum.photos/500/500'
 },
 
 {
@@ -58,7 +58,7 @@ export default Clothing = [{
     category: 'Denim Collection',
     percent: 35,
     validUntil: '13/09/2020',
-    imgUrl: 'https://www.macleans.ca/wp-content/uploads/2014/09/MAC36_WOMENS_CLOTHES_POST.jpg'
+    imgUrl: 'https://picsum.photos/500/500'
 },
 
 {
@@ -67,7 +67,7 @@ export default Clothing = [{
     category: 'Denim Collection',
     percent: 35,
     validUntil: '13/09/2020',
-    imgUrl: 'https://www.macleans.ca/wp-content/uploads/2014/09/MAC36_WOMENS_CLOTHES_POST.jpg'
+    imgUrl: 'https://picsum.photos/500/500'
 }
 
 

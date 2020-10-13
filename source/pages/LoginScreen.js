@@ -4,6 +4,7 @@ import { BigText, SmallText, TextWrapper } from '../atoms/TextAtoms';
 import {Input} from '../atoms/InputAtoms'
 import Button from '../atoms/ButtonAtoms'
 import NonScrollContainer from '../atoms/NonScrollContainer'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 const LoginScreen = ({callback}) => {
@@ -33,7 +34,7 @@ const LoginScreen = ({callback}) => {
             <SmallText gray={true}>Forgot your password? </SmallText>
         </TextWrapper>
         <TextWrapper marginTop={70}>
-            <SmallText gray={true}>Don't have an account?<SmallText gray={false}> Create one!</SmallText></SmallText>
+            <SmallText gray={true}>Don't have an account?<TouchableOpacity><SmallText gray={false}> Create one!</SmallText></TouchableOpacity></SmallText>
         </TextWrapper>
         </NonScrollContainer>
         </SafeAreaView>

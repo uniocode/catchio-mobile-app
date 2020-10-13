@@ -12,7 +12,7 @@ const App = () => {
   const [logged, setLogged] = useState(false)
 
   const rootReducer = combineReducers({
-    acceptedCoupons: Reducer
+    mainReducer: Reducer
   })
   const store = createStore(rootReducer)
 

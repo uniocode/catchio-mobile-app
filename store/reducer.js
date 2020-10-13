@@ -3,6 +3,7 @@ import {ADD_COUPON} from './action'
 
 const initialState = {
     acceptedCoupons: [{id: 12, name: 'Tiffany'}, {id: 23, name: 'Zara'}],
+    Clothing: Clothing
 }
 
 const acceptCouponsReducer = (state = initialState, action) => {

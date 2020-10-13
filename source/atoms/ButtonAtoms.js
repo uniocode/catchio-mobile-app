@@ -7,7 +7,7 @@ const Wrapper = styled.View`
 width: ${props => props.width}%;
 height: 50px;
 background: ${Colors.pastelCoral};
-margin-top: ${props => props.marginTop}px;
+margin-top: ${props => props.marginTop? props.marginTop : 0}px;
 border-radius: 200px;
 align-items: center;
 justify-content: center;

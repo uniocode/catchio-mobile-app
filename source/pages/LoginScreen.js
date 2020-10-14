@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Colors from '../../specs/Colors'
 import { BigText, SmallText, TextWrapper } from '../atoms/TextAtoms';
 import {Input} from '../atoms/InputAtoms'
 import Button from '../atoms/ButtonAtoms'
@@ -17,24 +18,24 @@ const LoginScreen = ({navigation}) => {
       
         <NonScrollContainer fullHeight={true}>
             <TextWrapper padding={0} align='center' width={90}>
-            <BigText marginTop={100}>CATCHIO</BigText>
+            <BigText color={Colors.pastelCoral} marginTop={100}>CATCHIO</BigText>
             </TextWrapper>
             <TextWrapper padding={0} align='flex-end' width={50}>
-            <SmallText gray={false}>let them see you</SmallText>
+            <SmallText color={Colors.pastelCoral}>let them see you</SmallText>
             </TextWrapper>
           
             <TextWrapper padding={30} align='flex-end' width={100}>
-                <BigText marginTop={100} gray={true}>DISCOUNTS</BigText>
-                <BigText gray={true}>JUST FOR YOU</BigText>
+                <BigText marginTop={100} color={Colors.mediumGray}>DISCOUNTS</BigText>
+                <BigText color={Colors.mediumGray}>JUST FOR YOU</BigText>
             </TextWrapper>
-            <Input marginTop={40} value={username} onChangeText={input => setUsername(input)}/>
-            <Input marginTop={10} secureTextEntry={true} value={password} onChangeText={input => setPassword(input)}/>
-            <Button width={80} marginTop={10} title='SIGN IN' onPress={() => navigation.navigate("Main Stack")}/>
+            <Input marginTop='40px' value={username} onChangeText={input => setUsername(input)}/>
+            <Input marginTop='10px' secureTextEntry={true} value={password} onChangeText={input => setPassword(input)}/>
+            <Button width='80%' marginTop='10px' color={Colors.pastelCoral} title='SIGN IN' onPress={() => navigation.navigate("Main Stack")}/>
         <TextWrapper marginTop={20} >
-            <TouchableOpacity onPress={() => navigation.navigate("Forgot Password")}><SmallText gray={true}>Forgot your password? </SmallText></TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Forgot Password")}><SmallText color={Colors.mediumGray}>Forgot your password? </SmallText></TouchableOpacity>
         </TextWrapper>
-        <TextWrapper marginTop={70}>
-            <SmallText gray={true}>Don't have an account?<TouchableOpacity onPress={() => navigation.navigate("Sign Up")}><SmallText gray={false}> Create one!</SmallText></TouchableOpacity></SmallText>
+        <TextWrapper marginTop='70px'>
+            <SmallText color={Colors.mediumGray}>Don't have an account?<TouchableOpacity onPress={() => navigation.navigate("Sign Up")}><SmallText color={Colors.pastelCoral}> Create one!</SmallText></TouchableOpacity></SmallText>
         </TextWrapper>
         </NonScrollContainer>
        

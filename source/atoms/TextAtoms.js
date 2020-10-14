@@ -4,7 +4,7 @@ import Colors from '../../specs/Colors'
 export const TextWrapper = styled.View`
 width: ${props => props.width ? props.width : 100}%;
 align-items: ${props => props.align? props.align : 'center'};
-padding: ${props => props.padding ? props.padding : 0}px;
+margin-top: ${props => props.marginTop ? props.marginTop : `0px`};
 `
 
 export const BigText = styled.Text`
@@ -13,14 +13,24 @@ font-weight: 800;
 margin: 0;
 padding: 0;
 margin-top: ${props => props.marginTop? props.marginTop : 0}px;
-color: ${props => props.gray ? Colors.mediumGray : Colors.pastelCoral};
+${props => props.color ? `color: ${props.color};` : null}
 
+`
+
+export const MediumText = styled.Text`
+font-size: 24px;
+${props => props.color ? `color: ${props.color};` : null}
+font-weight: bold;
+margin-top: ${props => props.marginTop ? props.marginTop : `0px`};
 `
 
 export const SmallText = styled.Text`
 font-size: 18px;
-color: ${props => props.gray ? Colors.mediumGray : Colors.pastelCoral};
+margin-top: ${props => props.marginTop ? props.marginTop : `0px`};
+${props => props.color ? `color: ${props.color};` : null}
 `
+
+
 
 
 

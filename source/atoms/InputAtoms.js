@@ -6,7 +6,7 @@ width: 80%;
 height: 50px;
 border: ${Colors.mediumGray} 1px solid;
 border-radius: 200px;
-margin-top: ${props => props.marginTop ? props.marginTop : 0}px;
+margin-top: ${props => props.marginTop ? props.marginTop : '0px'};
 padding: 15px;
 color: ${Colors.darkGray};
 `

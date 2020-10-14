@@ -7,15 +7,15 @@ import NonScrollContainer from '../atoms/NonScrollContainer'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
-const LoginScreen = ({callback}) => {
+const LoginScreen = ({navigation}) => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
 
     return ( 
-        <SafeAreaView>
-        <NonScrollContainer>
+      
+        <NonScrollContainer fullHeight={true}>
             <TextWrapper padding={0} align='center' width={90}>
             <BigText marginTop={100}>CATCHIO</BigText>
             </TextWrapper>
@@ -29,15 +29,15 @@ const LoginScreen = ({callback}) => {
             </TextWrapper>
             <Input marginTop={40} value={username} onChangeText={input => setUsername(input)}/>
             <Input marginTop={10} secureTextEntry={true} value={password} onChangeText={input => setPassword(input)}/>
-            <Button width={80} marginTop={10} title='SIGN IN' onPress={callback}/>
+            <Button width={80} marginTop={10} title='SIGN IN' onPress={() => navigation.navigate("Main Stack")}/>
         <TextWrapper marginTop={20} >
-            <SmallText gray={true}>Forgot your password? </SmallText>
+            <TouchableOpacity onPress={() => navigation.navigate("Forgot Password")}><SmallText gray={true}>Forgot your password? </SmallText></TouchableOpacity>
         </TextWrapper>
         <TextWrapper marginTop={70}>
-            <SmallText gray={true}>Don't have an account?<TouchableOpacity><SmallText gray={false}> Create one!</SmallText></TouchableOpacity></SmallText>
+            <SmallText gray={true}>Don't have an account?<TouchableOpacity onPress={() => navigation.navigate("Sign Up")}><SmallText gray={false}> Create one!</SmallText></TouchableOpacity></SmallText>
         </TextWrapper>
         </NonScrollContainer>
-        </SafeAreaView>
+       
      );
 }
  

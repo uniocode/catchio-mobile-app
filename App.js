@@ -23,9 +23,7 @@ const App = () => {
   }
   
 
-  if (!logged) {
-    return <LoginScreen callback={loginHandler}/>
-  }
+ 
 
   return (
     <Provider store={store}>

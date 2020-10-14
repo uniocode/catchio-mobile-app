@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import {SafeAreaView, View, Text, StatusBar} from 'react-native';
 import Navigator from './navigation/Navigator';
 import {createStore, combineReducers} from 'redux'
 import {Provider} from 'react-redux'
 import Reducer from './store/reducer'
-import {addCoupon} from './store/action'
-import LoginScreen from './source/pages/LoginScreen'
+
 
 const App = () => {
 

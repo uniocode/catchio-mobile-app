@@ -1,10 +1,10 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native'
-import NonScrollContainer from '../atoms/NonScrollContainer';
-import { SmallText, BigText, MediumText, TextWrapper } from '../atoms/TextAtoms';
-import Colors from '../../specs/Colors'
-import { Input } from '../atoms/InputAtoms';
-import Button, { ButtonWrapper } from '../atoms/ButtonAtoms';
+import NonScrollContainer from '../../atoms/NonScrollContainer';
+import { SmallText, MediumText, TextWrapper } from '../../atoms/TextAtoms';
+import Colors from '../../../specs/Colors'
+import { Input } from '../../atoms/InputAtoms';
+import Button from '../../atoms/ButtonAtoms';
 
 const SignUpScreen = ({navigation}) => {
     return ( 
@@ -30,6 +30,13 @@ const SignUpScreen = ({navigation}) => {
 
         </NonScrollContainer>
      );
+}
+
+export const screenOptions = navData => {
+    return {
+        headerTitle: 'Create Account',
+        headerTintColor: Colors.pastelCoral
+    }
 }
  
 export default SignUpScreen;

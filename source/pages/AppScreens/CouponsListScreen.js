@@ -1,45 +1,46 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import {FlatList} from 'react-native'
+import {useSelector, useDispatch} from 'react-redux'
+import {BLUETOOTH} from '../../../store/action'
+import CategorySlide from '../../organism/CategorySlide'
+import DiscountBox from '../../molecules/DiscountBox'
 import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
 import {faBars} from '@fortawesome/free-solid-svg-icons'
 import {faBluetooth} from '@fortawesome/free-brands-svg-icons'
-import {useSelector} from 'react-redux'
 import Colors from '../../../specs/Colors'
+import ScrollContainer from '../../atoms/ScrollContainer';
+
 
 const CouponsList = () => {
 
+ 
 
-  const acceptedCoupons = useSelector(state => state.acceptedCoupons)
-  console.log(acceptedCoupons)
+  const savedDiscounts = useSelector(state => state.mainReducer.savedDiscounts)
+
+
 
   return (
-    <SafeAreaView>
-      <View>
-        <Text> Here you will see your active coupons.</Text>
-      </View>
-    </SafeAreaView>
+    <ScrollContainer>
+           <FlatList showsHorizontalScrollIndicator={false} contentContainerStyle={{paddingHorizontal: 20}} horizontal={true} data={savedDiscounts} renderItem={itemData =>   <Text>{itemData.item.name}</Text>}/>  
+    </ScrollContainer>
   );
 };
 
 export const screenOptions = navData => {
 
-  const [bluetoothStatus, setBluetoothStatus] = useState(false)
+  const bluetoothStatus = useSelector(state => state.mainReducer.bluetoothStatus)
+  const dispatch = useDispatch()
 
-  // TODO: Migrate the function below to Redux Store
-  const bluetoothFunction = () => {
-    if (bluetoothStatus === false) {
-      setBluetoothStatus(true)
-    } else {
-      setBluetoothStatus(false)
+    const bluetoothFunction = () => {
+      dispatch({type: BLUETOOTH})
     }
-  }
+  
 
   return {
     headerTitle: "My Coupons",
     headerLeft: () => (
-      <TouchableOpacity style={{marginHorizontal: 20}}>
-           <FontAwesomeIcon icon={faBars} color={Colors.pastelCoral} size={25}/>
-      </TouchableOpacity>
+      null
     ),
     headerRight: () => (
       <TouchableOpacity style={{marginHorizontal: 20}} onPress={bluetoothFunction}>

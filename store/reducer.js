@@ -1,16 +1,34 @@
 import Clothing from '../dummydata/Clothing'
-import {ADD_COUPON} from './action'
+import {ADD_COUPON, SAVE_COUPON, COUPON_USED, BLUETOOTH} from './action'
 
 const initialState = {
-    acceptedCoupons: [{id: 12, name: 'Tiffany'}, {id: 23, name: 'Zara'}],
-    Clothing: Clothing
+    bluetoothStatus: false,
+   currentDiscounts: Clothing,
+   savedDiscounts: [],
+   usedDiscounts: []
 }
 
 const acceptCouponsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_COUPON:
-            const addedCoupon = Clothing.filter(discount => discount.id === action.data.id)
-            return [...state, state.acceptedCoupons.concat(addedCoupon)]
+        case BLUETOOTH:
+            if (!state.bluetoothStatus){
+
+                // set bluetooth on
+                state.bluetoothStatus = true
+
+            } else {
+                // set bluetooth off
+                state.bluetoothStatus = false
+            }
+            return state
+
+        case SAVE_COUPON:
+            const id = action.data.id
+            const addedCoupon = state.currentDiscounts.filter(discount => discount.id === id)
+            state.savedDiscounts.push(addedCoupon)
+            console.log('here')
+            console.log(state.savedDiscounts)
+            return state
     }
 
     return state

@@ -6,6 +6,7 @@ export default Colors = {
     peach: '#ffcdb2',
     mediumGray: '#C4C4C4',
     darkGray: '#7d7d7d',
-    lightGray: '#efefef'
+    lightGray: '#efefef',
+    white: '#ffffff'
 
 }

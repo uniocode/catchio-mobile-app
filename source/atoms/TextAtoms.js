@@ -28,9 +28,10 @@ margin-top: ${props => props.marginTop ? props.marginTop : `0px`};
 `
 
 export const SmallText = styled.Text`
-font-size: 18px;
+font-size: ${props => props.size ? props.size : '18px'};
 margin-top: ${props => props.marginTop ? props.marginTop : `0px`};
 ${props => props.color ? `color: ${props.color};` : null}
+font-weight: ${props => props.fontWeight? props.fontWeight : 'normal'};
 `
 
 

@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import Clothing from '../../../dummydata/Clothing'
+import {useSelector, useDispatch} from 'react-redux'
+import {BLUETOOTH, SAVE_COUPON} from '../../../store/action'
 import CategorySlide from '../../organism/CategorySlide';
 import ScrollContainer from '../../atoms/ScrollContainer'
-import { Text, TouchableOpacity } from 'react-native';
-import {useSpring, animated} from 'react-spring'
+import { TouchableOpacity } from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
 import {faBars} from '@fortawesome/free-solid-svg-icons'
 import {faBluetooth} from '@fortawesome/free-brands-svg-icons'
@@ -11,41 +11,44 @@ import Colors from '../../../specs/Colors'
 
 const HomeScreen = ({navigation}) => {
 
-  const specs = useSpring({opacity:1, from: {opacity:0}})
-  const AnimatedView = animated(Text)
+
+  const currentDiscounts = useSelector(state => state.mainReducer.currentDiscounts)
+  const dispatch = useDispatch()
+
 
   const onPressFunction = (id) => {
     // Giving id as params for the category screen in order to use to filter
-    navigation.navigate('Category', {id: id})
+    // navigation.navigate('Category', {id: id})
+    dispatch({type: SAVE_COUPON, data: {id:id}})
   }
 
   return (
    <ScrollContainer> 
-  <CategorySlide title='Hot Discounts' category={Clothing} onPressFunction={onPressFunction}/>
-  <CategorySlide title='Last Chances' category={Clothing} onPressFunction={onPressFunction}/>
-  <CategorySlide title='Delicious Offers' category={Clothing} onPressFunction={onPressFunction}/>
-  <CategorySlide title='Coming Discounts' category={Clothing} onPressFunction={onPressFunction}/>
+  <CategorySlide title='Hot Discounts' category={currentDiscounts} onPressFunction={onPressFunction}/>
+  <CategorySlide title='Last Chances' category={currentDiscounts} onPressFunction={onPressFunction}/>
+  <CategorySlide title='Delicious Offers' category={currentDiscounts} onPressFunction={onPressFunction}/>
+  <CategorySlide title='Coming Discounts' category={currentDiscounts} onPressFunction={onPressFunction}/>
   </ScrollContainer>
   );
 };
 
-export const screenOptions = navData => {
+export const screenOptions = ({navigation}) => {
 
-  const [bluetoothStatus, setBluetoothStatus] = useState(false)
+    const bluetoothStatus = useSelector(state => state.mainReducer.bluetoothStatus)
+    const dispatch = useDispatch()
 
-    // TODO: Migrate the function below to Redux Store
     const bluetoothFunction = () => {
-      if (bluetoothStatus === false) {
-        setBluetoothStatus(true)
-      } else {
-        setBluetoothStatus(false)
-      }
+      dispatch({type: BLUETOOTH})
+    }
+
+    const toggleDrawer = () => {
+      navigation.toggleDrawer();
     }
 
   return {
     headerTitle: 'Current Discounts',
     headerLeft: () => (
-      <TouchableOpacity style={{marginHorizontal: 20}}>
+      <TouchableOpacity style={{marginHorizontal: 20}} onPress={toggleDrawer}>
         <FontAwesomeIcon icon={faBars} color={Colors.pastelCoral} size={25}/>
       </TouchableOpacity>
     ),

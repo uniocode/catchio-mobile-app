@@ -8,11 +8,13 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
 import {faBars} from '@fortawesome/free-solid-svg-icons'
 import {faBluetooth} from '@fortawesome/free-brands-svg-icons'
 import Colors from '../../../specs/Colors'
+import CouponCard from '../../organism/CouponCard';
 
 const HomeScreen = ({navigation}) => {
 
 
   const currentDiscounts = useSelector(state => state.mainReducer.currentDiscounts)
+  const newCouponActive = useSelector(store => store.mainReducer.newCouponActive)
   const dispatch = useDispatch()
 
 
@@ -23,12 +25,15 @@ const HomeScreen = ({navigation}) => {
   }
 
   return (
+    <>
+         {newCouponActive && <CouponCard/>}
    <ScrollContainer> 
-  <CategorySlide title='Hot Discounts' category={currentDiscounts} onPressFunction={onPressFunction}/>
-  <CategorySlide title='Last Chances' category={currentDiscounts} onPressFunction={onPressFunction}/>
-  <CategorySlide title='Delicious Offers' category={currentDiscounts} onPressFunction={onPressFunction}/>
-  <CategorySlide title='Coming Discounts' category={currentDiscounts} onPressFunction={onPressFunction}/>
+  <CategorySlide opacity={newCouponActive ? 0.3 : 1} title='Hot Discounts' category={currentDiscounts} onPressFunction={onPressFunction}/>
+  <CategorySlide opacity={newCouponActive ? 0.3 : 1} title='Last Chances' category={currentDiscounts} onPressFunction={onPressFunction}/>
+  <CategorySlide opacity={newCouponActive ? 0.3 : 1} title='Delicious Offers' category={currentDiscounts} onPressFunction={onPressFunction}/>
+  <CategorySlide opacity={newCouponActive ? 0.3 : 1} title='Coming Discounts' category={currentDiscounts} onPressFunction={onPressFunction}/>
   </ScrollContainer>
+  </>
   );
 };
 

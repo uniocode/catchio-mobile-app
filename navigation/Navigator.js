@@ -19,12 +19,13 @@ import TermsOfUseScreen, {screenOptions as termsScreenOptions} from '../source/p
 import MyProfileScreen, {screenOptions as myProfileScreenOptions} from '../source/pages/DrawerScreens/MyProfileScreen'
 import SettingScreen, {screenOptions as settingScreenOptions} from '../source/pages/DrawerScreens/SettingScreen'
 import PrivacyScreen, {screenOptions as privacyScreenOptions} from '../source/pages/DrawerScreens/PrivacyScreen'
+import { useSelector } from 'react-redux';
 
 
 const Navigator = () => {
 
-  // will render Login Stack after checking the username and password. If the data exists the user will be directed to the Main Stack
-  const [login, setLogin] = useState(true)
+  const login = useSelector(store => store.mainReducer.loggedIn)
+  console.log(login)
 
   const Stack = createStackNavigator();
   const BottomTab = createBottomTabNavigator();
@@ -133,8 +134,8 @@ const PrivacyStack = () => {
   return (
     <NavigationContainer>
      <Stack.Navigator>
-       {!login && <Stack.Screen options={{headerShown: false}}  name="Login Stack" component={LoginStack}/>}
-       <Stack.Screen name="Main Stack" component={BottomTabBar} options={{headerShown: false}}/>
+       {!login ? <Stack.Screen options={{headerShown: false}}  name="Login Stack" component={LoginStack}/> : null}
+       {login ? <Stack.Screen name="Main Stack" component={BottomTabBar} options={{headerShown: false}}/> : null}
      </Stack.Navigator>
     </NavigationContainer>
   );

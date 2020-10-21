@@ -6,12 +6,16 @@ import Button from '../../atoms/ButtonAtoms'
 import NonScrollContainer from '../../atoms/NonScrollContainer'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Alert } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import {LOG_IN} from '../../../store/action'
 
 
 const LoginScreen = ({navigation}) => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const login = useSelector(store => store.mainReducer.loggedIn)
+    const dispatch = useDispatch()
 
 
     const loginHandler = () => {
@@ -19,13 +23,14 @@ const LoginScreen = ({navigation}) => {
         if (username === '' || password === '') {
             Alert.alert('Ups', 'Please, fill all the necessary inputs', [{text: 'Ok', style: 'cancel'}])
         } else {
-            navigation.navigate('Main Stack')
+            dispatch({type: LOG_IN})
+            console.log('here')
         }
     }
 
 
     return ( 
-        <NonScrollContainer fullHeight={true}>
+        <NonScrollContainer>
             <TextWrapper paddingTop="10px" align='center' width='90%'>
             <BigText color={Colors.pastelCoral} marginTop='100px'>CATCHIO</BigText>
             </TextWrapper>
@@ -39,7 +44,7 @@ const LoginScreen = ({navigation}) => {
             </TextWrapper>
             <Input marginTop='90px' value={username} onChangeText={input => setUsername(input)} autoFocus={true}/>
             <Input marginTop='10px' secureTextEntry={true} value={password} onChangeText={input => setPassword(input)}/>
-            <Button width='80%' marginTop='10px' color={Colors.pastelCoral} title='SIGN IN' onPress={loginHandler}/>
+            <Button  width='80%' marginTop='10px' color={Colors.pastelCoral} round={true} title='SIGN IN' callback={loginHandler}/>
         <TextWrapper marginTop='20px'>
             <TouchableOpacity onPress={() => navigation.navigate("Forgot Password")}><SmallText color={Colors.mediumGray}>Forgot your password? </SmallText></TouchableOpacity>
         </TextWrapper>

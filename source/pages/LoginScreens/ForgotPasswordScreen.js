@@ -8,14 +8,14 @@ import { MediumText, SmallText, TextWrapper } from '../../atoms/TextAtoms';
 
 const ForgotPasswordScreen = () => {
     return ( 
-        <NonScrollContainer fullHeight={true}>
+        <NonScrollContainer>
             <TextWrapper marginTop='40px' >
                 <MediumText color={Colors.pastelCoral}> Let's recover your password!</MediumText>
                 <SmallText color={Colors.mediumGray} marginTop='10px'> Please enter your email address below</SmallText>
             </TextWrapper>
             <Input marginTop="40px" placeholder="Username"/>
             <Input placeholder="Email" marginTop='5px'/>
-            <Button title="Submit" width="80%" color={Colors.pastelCoral} marginTop='20px'/>
+            <Button round={true} title="Submit" width="80%" color={Colors.pastelCoral} marginTop='20px'/>
         </NonScrollContainer>
      );
 }

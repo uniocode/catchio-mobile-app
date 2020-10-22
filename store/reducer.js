@@ -1,5 +1,5 @@
 import Clothing from '../dummydata/Clothing'
-import {ADD_COUPON, SAVE_COUPON, COUPON_USED, BLUETOOTH, LOG_IN, NEW_COUPON_ACTIVE} from './action'
+import {ADD_COUPON, SAVE_COUPON, COUPON_USED, BLUETOOTH, LOG_IN, NEW_COUPON_ACTIVE, SIGN_UP} from './action'
 
 const initialState = {
     bluetoothStatus: false,
@@ -69,8 +69,6 @@ const acceptCouponsReducer = (state = initialState, action) => {
             const id = action.data.id
             const addedCoupon = state.currentDiscounts.filter(discount => discount.id === id)
             state.acceptedCoupons.push(addedCoupon)
-            console.log('here')
-            console.log(state.acceptedCoupons)
             return state
 
         case NEW_COUPON_ACTIVE:
@@ -80,6 +78,7 @@ const acceptCouponsReducer = (state = initialState, action) => {
                 state.newCouponActive = true;
             }
             return state
+
     }
 
     return state

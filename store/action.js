@@ -4,6 +4,7 @@ export const COUPON_USED = 'COUPON_USED'
 export const BLUETOOTH = 'BLUETOOTH'
 export const NEW_COUPON_ACTIVE = 'NEW_COUPON_ACTIVE'
 export const LOG_IN = 'LOG_IN'
+export const SIGN_UP = 'SIGN_UP'
 
 export const addCoupon = ({id}) => {
     return {

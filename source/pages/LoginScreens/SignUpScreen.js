@@ -8,13 +8,18 @@ import {FormWrapper, Input} from '../../atoms/InputAtoms';
 import Button from '../../atoms/ButtonAtoms';
 
 const SignUpScreen = ({navigation}) => {
-  const [username, setUsername] = useState();
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
-  const [cellPhone, setCellPhone] = useState();
   const [password, setPassword] = useState();
+  const [hash, setHash] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
   const [error, setError] = useState(false);
   const [message, setMessage] = useState('');
+
+  // ------------- bcrypt
+
+  // ---------------------
 
   const signUpHandler = async () => {
     if (password != confirmPassword) {
@@ -22,13 +27,21 @@ const SignUpScreen = ({navigation}) => {
       setError(true);
     } else {
       try {
+        // var bcrypt = require('bcryptjs');
+        // bcrypt.genSalt(10, function (err, salt) {
+        //   bcrypt.hash(password, salt, (err, hash) => {
+        //     setHash(hash);
+        //   });
+        // });
         const response = await Axios.post(
-          'https://73fb9896e69f.ngrok.io/register',
+          'https://bedfb75978eb.ngrok.io/register',
           {
-            username: username,
-            email: email,
-            cellPhone: cellPhone,
-            password: password,
+            user: {
+              firstName: firstName,
+              lastName: lastName,
+              email: email,
+              password: hash,
+            },
           },
         );
         console.log(response.data);
@@ -63,19 +76,18 @@ const SignUpScreen = ({navigation}) => {
           </SmallText>
         ) : null}
         <Input
-          placeholder="Full Name"
-          onChangeText={(input) => setUsername(input)}
+          placeholder="First Name"
+          onChangeText={(input) => setFirstName(input)}
+        />
+        <Input
+          marginTop="10px"
+          placeholder="Last Name"
+          onChangeText={(input) => setLastName(input)}
         />
         <Input
           marginTop="10px"
           placeholder="Email"
           onChangeText={(input) => setEmail(input)}
-        />
-        <Input
-          marginTop="10px"
-          placeholder="Celular"
-          keyboardType={'numeric'}
-          onChangeText={(input) => setCellPhone(input)}
         />
         <Input
           marginTop="10px"
@@ -89,7 +101,7 @@ const SignUpScreen = ({navigation}) => {
           placeholder="Confirm Password"
           secureTextEntry={true}
           onChangeText={(input) => setConfirmPassword(input)}
-              error={error ? true : false}
+          error={error ? true : false}
         />
       </FormWrapper>
       <Button

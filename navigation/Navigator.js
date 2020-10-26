@@ -44,10 +44,12 @@ import PrivacyScreen, {
 } from '../source/pages/DrawerScreens/PrivacyScreen';
 import {useSelector} from 'react-redux';
 import WelcomeScreen from '../source/pages/LoginScreens/WelcomeScreen';
+import SingleDiscountScreen, {
+  screenOptions as SingleDiscountScreenOptions,
+} from '../source/pages/AppScreens/SingleDiscountScreen';
 
 const Navigator = () => {
   const login = useSelector((store) => store.mainReducer.loggedIn);
-  console.log(login);
 
   const Stack = createStackNavigator();
   const BottomTab = createBottomTabNavigator();
@@ -92,6 +94,11 @@ const Navigator = () => {
           options={homeScreenOptions}
         />
         <Stack.Screen name="Category" component={CategoryScreen} />
+        <Stack.Screen
+          name="SingleDiscount"
+          component={SingleDiscountScreen}
+          options={SingleDiscountScreenOptions}
+        />
       </Stack.Navigator>
     );
   };

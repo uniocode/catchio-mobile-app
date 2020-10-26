@@ -5,7 +5,6 @@ export const TextWrapper = styled.View`
   width: ${(props) => (props.width ? props.width : `100%`)};
   align-items: ${(props) => (props.align ? props.align : 'center')};
   justify-content: ${(props) => (props.justify ? props.justify : 'center')}
-  flex-direction: ${(props) => (props.direction ? props.direction : 'column')}
   margin-top: ${(props) => (props.marginTop ? props.marginTop : `0`)};
   padding-top: ${(props) => (props.paddingTop ? props.paddingTop : '0')};
   padding-left: ${(props) => (props.paddingLeft ? props.paddingLeft : '0')};

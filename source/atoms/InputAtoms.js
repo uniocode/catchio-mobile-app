@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {Dimensions} from 'react-native';
 import Colors from '../../specs/Colors';
 
 export const FormWrapper = styled.View`
@@ -11,7 +12,7 @@ export const FormWrapper = styled.View`
 `;
 
 export const Input = styled.TextInput`
-  width: 80%;
+  width: ${Dimensions.get('window').width - 80}px;
   height: 50px;
   border: ${(props) => (props.error ? Colors.pastelRed : Colors.mediumGray)} 1px
     solid;

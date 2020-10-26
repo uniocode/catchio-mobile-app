@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {BLUETOOTH, SAVE_COUPON} from '../../../store/action';
-import CategorySlide from '../../organism/CategorySlide';
+import CategorySlide from '../../molecules/CategorySlide';
 import ScrollContainer from '../../atoms/ScrollContainer';
 import {TouchableOpacity} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 import {faBluetooth} from '@fortawesome/free-brands-svg-icons';
 import Colors from '../../../specs/Colors';
-import CouponCard from '../../organism/CouponCard';
+import CouponCard from '../../molecules/CouponCard';
+import SearchBar from '../../molecules/SearchBar';
 
 const HomeScreen = ({navigation}) => {
   const currentDiscounts = useSelector(
@@ -19,39 +20,46 @@ const HomeScreen = ({navigation}) => {
   );
   const dispatch = useDispatch();
 
-  const onPressFunction = (id) => {
-    // Giving id as params for the category screen in order to use to filter
-    // navigation.navigate('Category', {id: id})
-    dispatch({type: SAVE_COUPON, data: {id: id}});
+  const discountCallback = (id, name) => {
+    navigation.navigate('SingleDiscount', [{id: id}, {name: name}]);
+  };
+
+  const categoryCallback = (category) => {
+    navigation.navigate('Category', {params: [category]});
   };
 
   return (
     <>
       {newCouponActive && <CouponCard />}
       <ScrollContainer>
+        <SearchBar />
         <CategorySlide
           opacity={newCouponActive ? 0.3 : 1}
           title="Hot Discounts"
           category={currentDiscounts}
-          onPressFunction={onPressFunction}
+          categoryCallback={categoryCallback}
+          discountCallback={discountCallback}
         />
         <CategorySlide
           opacity={newCouponActive ? 0.3 : 1}
           title="Last Chances"
           category={currentDiscounts}
-          onPressFunction={onPressFunction}
+          categoryCallback={categoryCallback}
+          discountCallback={discountCallback}
         />
         <CategorySlide
           opacity={newCouponActive ? 0.3 : 1}
           title="Delicious Offers"
           category={currentDiscounts}
-          onPressFunction={onPressFunction}
+          categoryCallback={categoryCallback}
+          discountCallback={discountCallback}
         />
         <CategorySlide
           opacity={newCouponActive ? 0.3 : 1}
           title="Coming Discounts"
           category={currentDiscounts}
-          onPressFunction={onPressFunction}
+          categoryCallback={categoryCallback}
+          discountCallback={discountCallback}
         />
       </ScrollContainer>
     </>
@@ -73,7 +81,7 @@ export const screenOptions = ({navigation}) => {
   };
 
   return {
-    headerTitle: 'Current Discounts',
+    headerTitle: 'Discounts',
     headerLeft: () => (
       <TouchableOpacity style={{marginHorizontal: 20}} onPress={toggleDrawer}>
         <FontAwesomeIcon icon={faBars} color={Colors.pastelCoral} size={25} />

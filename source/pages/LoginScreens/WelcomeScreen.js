@@ -13,12 +13,19 @@ const WelcomeScreen = ({navigation}) => {
 
   return (
     <NonScrollContainer background={Colors.pastelCoral}>
-      <TextWrapper paddingTop="200px" align="center" width="90%">
+      <TextWrapper
+        paddingTop="200px"
+        align="center"
+        width="90%"
+        background={Colors.pastelCoral}>
         <BigText color={Colors.white} marginTop="100px">
           CATCHIO
         </BigText>
       </TextWrapper>
-      <TextWrapper align="flex-end" width={Dimensions.get('window').width / 2}>
+      <TextWrapper
+        background={Colors.pastelCoral}
+        align="flex-end"
+        width={Dimensions.get('window').width / 2 + 'px'}>
         <SmallText color={Colors.white}>let them see you</SmallText>
       </TextWrapper>
     </NonScrollContainer>

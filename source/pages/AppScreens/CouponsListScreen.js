@@ -2,16 +2,15 @@ import React, {useEffect, useState, useRef} from 'react';
 import {StyleSheet, Animated, FlatList} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {BLUETOOTH} from '../../../store/action';
-import CategorySlide from '../../organism/CategorySlide';
-import DiscountBox from '../../molecules/DiscountBox';
+
 import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faBars} from '@fortawesome/free-solid-svg-icons';
+
 import {faBluetooth} from '@fortawesome/free-brands-svg-icons';
 import Colors from '../../../specs/Colors';
 import ScrollContainer from '../../atoms/ScrollContainer';
-import NonScrollContainer from '../../atoms/NonScrollContainer';
-import CouponCard from '../../organism/CouponCard';
+
+import CouponCard from '../../molecules/CouponCard';
 
 const CouponsList = () => {
   const acceptedCoupons = useSelector(

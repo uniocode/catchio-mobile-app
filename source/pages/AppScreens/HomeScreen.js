@@ -30,7 +30,7 @@ const HomeScreen = ({navigation}) => {
 
   return (
     <>
-      {newCouponActive && <CouponCard />}
+      {/* {newCouponActive && <CouponCard />} */}
       <ScrollContainer>
         <SearchBar />
         <CategorySlide

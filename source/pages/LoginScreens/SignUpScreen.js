@@ -6,8 +6,15 @@ import {SmallText, MediumText, TextWrapper} from '../../atoms/TextAtoms';
 import Colors from '../../../specs/Colors';
 import {FormWrapper, Input} from '../../atoms/InputAtoms';
 import Button from '../../atoms/ButtonAtoms';
+import {
+  LoginButton,
+  AccessToken,
+  GraphRequest,
+  GraphRequestManager,
+} from 'react-native-fbsdk';
 
 const SignUpScreen = ({navigation}) => {
+  const [state, setState] = useState();
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
@@ -17,9 +24,26 @@ const SignUpScreen = ({navigation}) => {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState('');
 
-  // ------------- bcrypt
-
-  // ---------------------
+  const getInfoFromToken = (token) => {
+    const PROFILE_REQUEST_PARAMS = {
+      fields: {
+        string: 'id, nme, first_name, last_name',
+      },
+    };
+    const profileRequest = new GraphRequest(
+      '/me',
+      {token, parameters: PROFILE_REQUEST_PARAMS},
+      (error, result) => {
+        if (error) {
+          console.log(error);
+        } else {
+          setState(result);
+          console.log(result);
+        }
+      },
+    );
+    new GraphRequestManager.addRequest(profileRequest).start();
+  };
 
   const signUpHandler = async () => {
     if (password != confirmPassword) {
@@ -27,12 +51,6 @@ const SignUpScreen = ({navigation}) => {
       setError(true);
     } else {
       try {
-        // var bcrypt = require('bcryptjs');
-        // bcrypt.genSalt(10, function (err, salt) {
-        //   bcrypt.hash(password, salt, (err, hash) => {
-        //     setHash(hash);
-        //   });
-        // });
         const response = await Axios.post(
           'https://bedfb75978eb.ngrok.io/register',
           {
@@ -123,13 +141,14 @@ const SignUpScreen = ({navigation}) => {
           width="80%"
           marginTop="20px"
         />
-        <Button
+        {/* <Button
           round={true}
           title="Facebook"
           color="#3b5998"
           width="80%"
           marginTop="10px"
-        />
+        /> */}
+        <LoginButton />
       </TextWrapper>
       <TextWrapper marginTop="40px">
         <SmallText color={Colors.mediumGray}>

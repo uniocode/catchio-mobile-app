@@ -14,34 +14,7 @@ const initialState = {
   newCouponActive: false,
   loggedIn: false,
   currentDiscounts: Clothing,
-  acceptedCoupons: [
-    {
-      id: 1,
-      name: 'ZARA',
-      category: 'Winter Collection',
-      percent: 20,
-      validUntil: '20/07/2020',
-      imgUrl: 'https://picsum.photos/500/500',
-    },
-
-    {
-      id: 2,
-      name: 'H&M',
-      category: 'Denim Collection',
-      percent: 35,
-      validUntil: '13/09/2020',
-      imgUrl: 'https://picsum.photos/500/500',
-    },
-
-    {
-      id: 3,
-      name: 'ARMANI',
-      category: 'All Accessories',
-      percent: 20,
-      validUntil: '13/09/2020',
-      imgUrl: 'https://picsum.photos/500/500',
-    },
-  ],
+  acceptedCoupons: [],
   usedDiscounts: [],
 };
 
@@ -69,7 +42,9 @@ const acceptCouponsReducer = (state = initialState, action) => {
       return state;
 
     case SAVE_COUPON:
-      const id = action.data.id;
+      console.log('working');
+      console.log(state.acceptedCoupons);
+      const id = action.data;
       const addedCoupon = state.currentDiscounts.filter(
         (discount) => discount.id === id,
       );

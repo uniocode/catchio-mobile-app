@@ -8,6 +8,10 @@ target 'catchioMobileApp' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'react-native-ble-plx', :path => '../node_modules/react-native-ble-plx'
+
+  pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
+
   target 'catchioMobileAppTests' do
     inherit! :complete
     # Pods for testing

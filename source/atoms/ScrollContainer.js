@@ -1,11 +1,9 @@
-import styled from 'styled-components'
-
+import styled from 'styled-components';
 
 const ScrollContainer = styled.ScrollView`
-width: 100%;
-height: 100px;
-`
+  width: ${(props) => (props.width ? props.width : '100%')};
+  background: ${(props) =>
+    props.background ? props.background : Colors.white};
+`;
 
-
- 
 export default ScrollContainer;

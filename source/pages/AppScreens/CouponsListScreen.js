@@ -1,52 +1,68 @@
-import React, { useState } from 'react';
-import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
-import {faBars} from '@fortawesome/free-solid-svg-icons'
-import {faBluetooth} from '@fortawesome/free-brands-svg-icons'
-import {useSelector} from 'react-redux'
-import Colors from '../../../specs/Colors'
+import React, {useEffect, useState} from 'react';
+import {FlatList} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
+import {BLUETOOTH} from '../../../store/action';
+import {Text, TouchableOpacity} from 'react-native';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faBluetooth} from '@fortawesome/free-brands-svg-icons';
+import Colors from '../../../specs/Colors';
+import ScrollContainer from '../../atoms/ScrollContainer';
 
 const CouponsList = () => {
+  const [coupons, setCoupons] = useState();
 
+  const acceptedCoupons = useSelector(
+    (state) => state.mainReducer.acceptedCoupons,
+  );
 
-  const acceptedCoupons = useSelector(state => state.acceptedCoupons)
-  console.log(acceptedCoupons)
+  const renderItem = (item) => {
+    return <Text>{item.name}</Text>;
+  };
+
+  useEffect(() => {
+    setCoupons(acceptedCoupons);
+  }, [acceptedCoupons]);
+
+  useEffect(() => {
+    setCoupons(acceptedCoupons);
+  }, []);
 
   return (
-    <SafeAreaView>
-      <View>
-        <Text> Here you will see your active coupons.</Text>
-      </View>
-    </SafeAreaView>
+    <ScrollContainer fullHeight={true}>
+      <FlatList
+        style={{width: '100%', height: '100%'}}
+        data={coupons}
+        renderItem={(itemData) => <Text>Hey {itemData.item.id}</Text>}
+      />
+    </ScrollContainer>
   );
 };
 
-export const screenOptions = navData => {
+export const screenOptions = (navData) => {
+  const bluetoothStatus = useSelector(
+    (state) => state.mainReducer.bluetoothStatus,
+  );
+  const dispatch = useDispatch();
 
-  const [bluetoothStatus, setBluetoothStatus] = useState(false)
-
-  // TODO: Migrate the function below to Redux Store
   const bluetoothFunction = () => {
-    if (bluetoothStatus === false) {
-      setBluetoothStatus(true)
-    } else {
-      setBluetoothStatus(false)
-    }
-  }
+    dispatch({type: BLUETOOTH});
+  };
 
   return {
-    headerTitle: "My Coupons",
-    headerLeft: () => (
-      <TouchableOpacity style={{marginHorizontal: 20}}>
-           <FontAwesomeIcon icon={faBars} color={Colors.pastelCoral} size={25}/>
+    headerTitle: 'My Coupons',
+    headerLeft: () => null,
+    headerRight: () => (
+      <TouchableOpacity
+        style={{marginHorizontal: 20}}
+        onPress={bluetoothFunction}>
+        <FontAwesomeIcon
+          icon={faBluetooth}
+          color={bluetoothStatus ? '#287AA9' : Colors.mediumGray}
+          size={25}
+        />
       </TouchableOpacity>
     ),
-    headerRight: () => (
-      <TouchableOpacity style={{marginHorizontal: 20}} onPress={bluetoothFunction}>
-        <FontAwesomeIcon icon={faBluetooth} color={bluetoothStatus ? '#287AA9' : Colors.mediumGray} size={25}/>
-      </TouchableOpacity>
-    )
-  }
-}
+  };
+};
 
 export default CouponsList;

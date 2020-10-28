@@ -1,19 +1,66 @@
-import Clothing from '../dummydata/Clothing'
-import {ADD_COUPON} from './action'
+import Clothing from '../dummydata/Clothing';
+import {
+  ADD_COUPON,
+  SAVE_COUPON,
+  COUPON_USED,
+  BLUETOOTH,
+  LOG_IN,
+  NEW_COUPON_ACTIVE,
+  SIGN_UP,
+} from './action';
 
 const initialState = {
-    acceptedCoupons: [{id: 12, name: 'Tiffany'}, {id: 23, name: 'Zara'}],
-    Clothing: Clothing
-}
+  bluetoothStatus: false,
+  newCouponActive: false,
+  loggedIn: false,
+  currentDiscounts: Clothing,
+  acceptedCoupons: [],
+  usedDiscounts: [],
+};
 
 const acceptCouponsReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case ADD_COUPON:
-            const addedCoupon = Clothing.filter(discount => discount.id === action.data.id)
-            return [...state, state.acceptedCoupons.concat(addedCoupon)]
-    }
+  switch (action.type) {
+    case BLUETOOTH:
+      if (!state.bluetoothStatus) {
+        // set bluetooth on
+        state.bluetoothStatus = true;
+        state.newCouponActive = true; // temporary just to test
+      } else {
+        // set bluetooth off
+        state.bluetoothStatus = false;
+        state.newCouponActive = false; // temporary just to test
+      }
+      return state;
 
-    return state
-} 
+    case LOG_IN:
+      if (state.loggedIn === false) {
+        state.loggedIn = true;
+      } else if (state.loggedIn === true) {
+        state.loggedIn = false;
+      }
 
-export default acceptCouponsReducer
+      return state;
+
+    case SAVE_COUPON:
+      console.log('working');
+      console.log(state.acceptedCoupons);
+      const id = action.data;
+      const addedCoupon = state.currentDiscounts.filter(
+        (discount) => discount.id === id,
+      );
+      state.acceptedCoupons.push(addedCoupon);
+      return state;
+
+    case NEW_COUPON_ACTIVE:
+      if (state.newCouponActive === true) {
+        state.newCouponActive = false;
+      } else {
+        state.newCouponActive = true;
+      }
+      return state;
+  }
+
+  return state;
+};
+
+export default acceptCouponsReducer;

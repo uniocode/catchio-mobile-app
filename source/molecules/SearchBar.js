@@ -1,6 +1,7 @@
 import {Input} from '../atoms/InputAtoms';
 import NonScrollContainer from '../atoms/NonScrollContainer';
 import React from 'react';
+import {Dimensions} from 'react-native';
 import {SmallText, TextWrapper} from '../atoms/TextAtoms';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
@@ -17,7 +18,11 @@ const SearchBar = () => {
       <TextWrapper position="absolute" height="100%" width="10%" left="11%">
         <FontAwesomeIcon icon={faSearch} size={20} color="#e5989b" />
       </TextWrapper>
-      <Input textAlign="center" placeholder="Search for discounts" />
+      <Input
+        width={Dimensions.get('window').width - 50 + 'px'}
+        textAlign="center"
+        placeholder="Search for discounts"
+      />
     </NonScrollContainer>
   );
 };

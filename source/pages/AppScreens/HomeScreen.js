@@ -10,6 +10,9 @@ import {faBluetooth} from '@fortawesome/free-brands-svg-icons';
 import Colors from '../../../specs/Colors';
 import CouponCard from '../../molecules/CouponCard';
 import SearchBar from '../../molecules/SearchBar';
+import {SvgUri} from 'react-native-svg';
+import Img from '../../../assets/icons/dot.svg';
+import DotsMenu from '../../atoms/DotsMenu';
 
 const HomeScreen = ({navigation}) => {
   const currentDiscounts = useSelector(
@@ -25,7 +28,7 @@ const HomeScreen = ({navigation}) => {
   };
 
   const categoryCallback = (category) => {
-    navigation.navigate('Category', {params: [category]});
+    navigation.navigate('Category', {category: category});
   };
 
   return (
@@ -67,15 +70,6 @@ const HomeScreen = ({navigation}) => {
 };
 
 export const screenOptions = ({navigation}) => {
-  const bluetoothStatus = useSelector(
-    (state) => state.mainReducer.bluetoothStatus,
-  );
-  const dispatch = useDispatch();
-
-  const bluetoothFunction = () => {
-    dispatch({type: BLUETOOTH});
-  };
-
   const toggleDrawer = () => {
     navigation.toggleDrawer();
   };
@@ -84,18 +78,7 @@ export const screenOptions = ({navigation}) => {
     headerTitle: 'Discounts',
     headerLeft: () => (
       <TouchableOpacity style={{marginHorizontal: 20}} onPress={toggleDrawer}>
-        <FontAwesomeIcon icon={faBars} color={Colors.pastelCoral} size={25} />
-      </TouchableOpacity>
-    ),
-    headerRight: () => (
-      <TouchableOpacity
-        style={{marginHorizontal: 20}}
-        onPress={bluetoothFunction}>
-        <FontAwesomeIcon
-          icon={faBluetooth}
-          color={bluetoothStatus ? '#287AA9' : Colors.mediumGray}
-          size={25}
-        />
+        <DotsMenu />
       </TouchableOpacity>
     ),
   };

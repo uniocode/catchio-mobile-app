@@ -25,7 +25,9 @@ import ForgotPasswordScreen, {
 import HomeScreen, {
   screenOptions as homeScreenOptions,
 } from '../source/pages/AppScreens/HomeScreen';
-import CategoryScreen from '../source/pages/AppScreens/CategoryScreen';
+import CategoryScreen, {
+  screenOptions as CategoryScreenOptions,
+} from '../source/pages/AppScreens/CategoryScreen';
 import CouponsListScreen, {
   screenOptions as couponScreenOptions,
 } from '../source/pages/AppScreens/CouponsListScreen';
@@ -93,7 +95,11 @@ const Navigator = () => {
           component={HomeScreen}
           options={homeScreenOptions}
         />
-        <Stack.Screen name="Category" component={CategoryScreen} />
+        <Stack.Screen
+          name="Category"
+          component={CategoryScreen}
+          options={CategoryScreenOptions}
+        />
         <Stack.Screen
           name="SingleDiscount"
           component={SingleDiscountScreen}

@@ -25,7 +25,7 @@ const CategorySlide = ({
           {title}
         </SmallText>
         <TextWrapper width="50%" align="flex-end">
-          <TouchableOpacity onPress={categoryCallback}>
+          <TouchableOpacity onPress={() => categoryCallback(title)}>
             <TextWrapper
               flexDirection="row"
               align="flex-end"

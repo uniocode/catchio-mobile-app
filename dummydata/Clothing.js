@@ -1,75 +1,81 @@
-export default Clothing = [{
+export default Clothing = [
+  {
     id: 1,
     name: 'ZARA',
-    category: 'Winter Collection',
+    theme: 'Winter Collection',
     percent: 20,
     validUntil: '20/07/2020',
-    imgUrl: 'https://picsum.photos/500/500'
-},
+    imgUrl: 'https://picsum.photos/500/500',
+    category: 'clothing',
+  },
 
-{
+  {
     id: 2,
     name: 'H&M',
-    category: 'Denim Collection',
+    theme: 'Denim Collection',
     percent: 35,
     validUntil: '13/09/2020',
-    imgUrl: 'https://picsum.photos/500/500'
-},
+    imgUrl: 'https://picsum.photos/500/500',
+    category: 'food',
+  },
 
-{
+  {
     id: 3,
     name: 'ARMANI',
-    category: 'All Accessories',
+    theme: 'All Accessories',
     percent: 20,
     validUntil: '13/09/2020',
-    imgUrl: 'https://picsum.photos/500/500'
-},
+    imgUrl: 'https://picsum.photos/500/500',
+    category: 'clothing',
+  },
 
-{
+  {
     id: 4,
     name: 'STRADIVARIUS',
-    category: 'Workout Clothing',
+    theme: 'Workout Clothing',
     percent: 10,
     validUntil: '13/09/2020',
-    imgUrl: 'https://picsum.photos/500/500'
-},
+    imgUrl: 'https://picsum.photos/500/500',
+    category: 'clothing',
+  },
 
-{
+  {
     id: 5,
     name: 'ADIDAS',
-    category: 'Black Collection',
+    theme: 'Black Collection',
     percent: 15,
     validUntil: '13/09/2020',
-    imgUrl: 'https://picsum.photos/500/500'
-},
+    imgUrl: 'https://picsum.photos/500/500',
+    category: 'electronics',
+  },
 
-{
+  {
     id: 6,
     name: 'Nike',
-    category: 'Running Collection',
+    theme: 'Running Collection',
     percent: 10,
     validUntil: '13/09/2020',
-    imgUrl: 'https://picsum.photos/500/500'
-},
+    imgUrl: 'https://picsum.photos/500/500',
+    category: 'clothing',
+  },
 
-{
+  {
     id: 7,
     name: 'BERSHKA',
-    category: 'Denim Collection',
+    theme: 'Denim Collection',
     percent: 35,
     validUntil: '13/09/2020',
-    imgUrl: 'https://picsum.photos/500/500'
-},
+    imgUrl: 'https://picsum.photos/500/500',
+    category: 'electronics',
+  },
 
-{
+  {
     id: 8,
     name: 'FOREVER 21',
-    category: 'Denim Collection',
+    theme: 'Denim Collection',
     percent: 35,
     validUntil: '13/09/2020',
-    imgUrl: 'https://picsum.photos/500/500'
-}
-
-
-
-]
+    imgUrl: 'https://picsum.photos/500/500',
+    category: 'food',
+  },
+];

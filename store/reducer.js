@@ -20,18 +20,6 @@ const initialState = {
 
 const acceptCouponsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case BLUETOOTH:
-      if (!state.bluetoothStatus) {
-        // set bluetooth on
-        state.bluetoothStatus = true;
-        state.newCouponActive = true; // temporary just to test
-      } else {
-        // set bluetooth off
-        state.bluetoothStatus = false;
-        state.newCouponActive = false; // temporary just to test
-      }
-      return state;
-
     case LOG_IN:
       if (state.loggedIn === false) {
         state.loggedIn = true;
@@ -48,6 +36,7 @@ const acceptCouponsReducer = (state = initialState, action) => {
       const addedCoupon = state.currentDiscounts.filter(
         (discount) => discount.id === id,
       );
+
       state.acceptedCoupons.push(addedCoupon);
       return state;
 

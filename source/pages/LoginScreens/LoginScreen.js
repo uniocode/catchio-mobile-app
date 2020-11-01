@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {Image, KeyboardAvoidingView, StyleSheet, View} from 'react-native';
 import Colors from '../../../specs/Colors';
 import {BigText, SmallText, TextWrapper} from '../../atoms/TextAtoms';
 import {FormWrapper, Input} from '../../atoms/InputAtoms';
@@ -52,26 +53,32 @@ const LoginScreen = ({navigation}) => {
         </BigText>
         <BigText color={Colors.mediumGray}>JUST FOR YOU</BigText>
       </TextWrapper>
-      <FormWrapper marginTop="90px" position="relative">
-        {error && (
-          <SmallText color={Colors.pastelRed} position="absolute" top="-30px">
-            {errorText}
-          </SmallText>
-        )}
-        <Input
-          value={username}
-          onChangeText={(input) => setUsername(input)}
-          autoFocus={true}
-          error={error ? true : false}
-        />
-        <Input
-          marginTop="10px"
-          secureTextEntry={true}
-          value={password}
-          onChangeText={(input) => setPassword(input)}
-          error={error ? true : false}
-        />
-      </FormWrapper>
+
+      <KeyboardAvoidingView behavior="padding">
+        <FormWrapper marginTop="90px" position="relative">
+          {error && (
+            <SmallText color={Colors.pastelRed} position="absolute" top="-30px">
+              {errorText}
+            </SmallText>
+          )}
+          <Input
+            value={username}
+            onChangeText={(input) => setUsername(input)}
+            autoFocus={true}
+            error={error ? true : false}
+            placeholder="Username"
+            autoCorrect={false}
+          />
+          <Input
+            marginTop="10px"
+            secureTextEntry={true}
+            value={password}
+            onChangeText={(input) => setPassword(input)}
+            error={error ? true : false}
+            placeholder="Password"
+          />
+        </FormWrapper>
+      </KeyboardAvoidingView>
       <Button
         width="80%"
         marginTop="10px"

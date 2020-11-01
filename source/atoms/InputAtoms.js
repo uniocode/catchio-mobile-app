@@ -12,7 +12,8 @@ export const FormWrapper = styled.View`
 `;
 
 export const Input = styled.TextInput`
-  width: ${Dimensions.get('window').width - 80}px;
+  width: ${(props) =>
+    props.width ? props.width : Dimensions.get('window').width - 80 + 'px'};
   height: 50px;
   border: ${(props) => (props.error ? Colors.pastelRed : Colors.mediumGray)} 1px
     solid;

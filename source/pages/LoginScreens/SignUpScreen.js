@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
+
 import Axios from 'axios';
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity, Text, KeyboardAvoidingView} from 'react-native';
 import NonScrollContainer from '../../atoms/NonScrollContainer';
 import {SmallText, MediumText, TextWrapper} from '../../atoms/TextAtoms';
 import Colors from '../../../specs/Colors';
@@ -87,41 +88,58 @@ const SignUpScreen = ({navigation}) => {
           Let's create an account
         </SmallText>
       </TextWrapper>
-      <FormWrapper marginTop="50px">
-        {error ? (
-          <SmallText color={Colors.pastelRed} position="absolute" top="-30px">
-            {message}
-          </SmallText>
-        ) : null}
-        <Input
-          placeholder="First Name"
-          onChangeText={(input) => setFirstName(input)}
-        />
-        <Input
-          marginTop="10px"
-          placeholder="Last Name"
-          onChangeText={(input) => setLastName(input)}
-        />
-        <Input
-          marginTop="10px"
-          placeholder="Email"
-          onChangeText={(input) => setEmail(input)}
-        />
-        <Input
-          marginTop="10px"
-          placeholder="Password"
-          secureTextEntry={true}
-          onChangeText={(input) => setPassword(input)}
-          error={error ? true : false}
-        />
-        <Input
-          marginTop="10px"
-          placeholder="Confirm Password"
-          secureTextEntry={true}
-          onChangeText={(input) => setConfirmPassword(input)}
-          error={error ? true : false}
-        />
-      </FormWrapper>
+      <KeyboardAvoidingView>
+        <FormWrapper marginTop="50px">
+          {error ? (
+            <SmallText color={Colors.pastelRed} position="absolute" top="-30px">
+              {message}
+            </SmallText>
+          ) : null}
+          <Input
+            placeholder="First Name"
+            onChangeText={(input) => setFirstName(input)}
+            required
+            returnKeyType="next"
+          />
+          <Input
+            marginTop="10px"
+            placeholder="Last Name"
+            onChangeText={(input) => setLastName(input)}
+            required
+            returnKeyType="next"
+          />
+          <Input
+            marginTop="10px"
+            placeholder="Email"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            onChangeText={(input) => setEmail(input)}
+            required
+            returnKeyType="next"
+          />
+          <Input
+            marginTop="10px"
+            placeholder="Password"
+            secureTextEntry={true}
+            onChangeText={(input) => setPassword(input)}
+            error={error ? true : false}
+            autoCapitalize="none"
+            required
+            returnKeyType="next"
+          />
+          <Input
+            marginTop="10px"
+            placeholder="Confirm Password"
+            secureTextEntry={true}
+            onChangeText={(input) => setConfirmPassword(input)}
+            error={error ? true : false}
+            autoCapitalize="none"
+            required
+            returnKeyType="done"
+            onSubmitEditing={signUpHandler}
+          />
+        </FormWrapper>
+      </KeyboardAvoidingView>
       <Button
         round={true}
         title="Create Account"
@@ -141,14 +159,13 @@ const SignUpScreen = ({navigation}) => {
           width="80%"
           marginTop="20px"
         />
-        {/* <Button
+        <Button
           round={true}
           title="Facebook"
           color="#3b5998"
           width="80%"
           marginTop="10px"
-        /> */}
-        <LoginButton />
+        />
       </TextWrapper>
       <TextWrapper marginTop="40px">
         <SmallText color={Colors.mediumGray}>

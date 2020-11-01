@@ -15,8 +15,8 @@ const CouponsList = () => {
     (state) => state.mainReducer.acceptedCoupons,
   );
 
-  const renderItem = (item) => {
-    return <Text>{item.name}</Text>;
+  const renderItem = (itemData) => {
+    return <Text> hwy{itemData.item.name}</Text>;
   };
 
   useEffect(() => {
@@ -32,36 +32,16 @@ const CouponsList = () => {
       <FlatList
         style={{width: '100%', height: '100%'}}
         data={coupons}
-        renderItem={(itemData) => <Text>Hey {itemData.item.id}</Text>}
+        renderItem={renderItem}
       />
     </ScrollContainer>
   );
 };
 
 export const screenOptions = (navData) => {
-  const bluetoothStatus = useSelector(
-    (state) => state.mainReducer.bluetoothStatus,
-  );
-  const dispatch = useDispatch();
-
-  const bluetoothFunction = () => {
-    dispatch({type: BLUETOOTH});
-  };
-
   return {
     headerTitle: 'My Coupons',
     headerLeft: () => null,
-    headerRight: () => (
-      <TouchableOpacity
-        style={{marginHorizontal: 20}}
-        onPress={bluetoothFunction}>
-        <FontAwesomeIcon
-          icon={faBluetooth}
-          color={bluetoothStatus ? '#287AA9' : Colors.mediumGray}
-          size={25}
-        />
-      </TouchableOpacity>
-    ),
   };
 };
 

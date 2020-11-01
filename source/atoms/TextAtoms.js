@@ -6,6 +6,7 @@ export const TextWrapper = styled.View`
   align-items: ${(props) => (props.align ? props.align : 'center')};
   justify-content: ${(props) => (props.justify ? props.justify : 'center')}
   margin-top: ${(props) => (props.marginTop ? props.marginTop : `0`)};
+  margin-bottom: ${(props) => (props.marginBottom ? props.marginBottom : `0`)};
   padding-top: ${(props) => (props.paddingTop ? props.paddingTop : '0')};
   padding-left: ${(props) => (props.paddingLeft ? props.paddingLeft : '0')};
   padding-right: ${(props) => (props.paddingRight ? props.paddingRight : '0')};

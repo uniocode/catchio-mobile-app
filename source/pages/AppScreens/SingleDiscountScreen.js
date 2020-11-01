@@ -10,8 +10,7 @@ import {
   TextWrapper,
 } from '../../atoms/TextAtoms';
 import Button from '../../atoms/ButtonAtoms';
-import {ADD_COUPON, SAVE_COUPON} from '../../../store/action';
-import {BleManager} from 'react-native-ble-plx';
+import {SAVE_COUPON} from '../../../store/action';
 
 const SingleDiscountScreen = ({route, navigation}) => {
   const id = route.params[0].id;
@@ -47,7 +46,6 @@ const SingleDiscountScreen = ({route, navigation}) => {
         source={{uri: selectedDiscount[0].imgUrl}}
       />
       <Button title="ADD" callback={acceptCoupon} />
-      <Button title="Bluetooth" callback={turnBlueOn} />
     </NonScrollContainer>
   );
 };
